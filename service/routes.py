@@ -51,7 +51,6 @@ def create_accounts():
     account.create()
     message = account.serialize()
     location_url = url_for("get_accounts", account_id=account.id, _external=True)
-    location_url = "/"  # Remove once get_accounts has been implemented
     return make_response(
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
@@ -59,6 +58,7 @@ def create_accounts():
 ######################################################################
 # LIST ALL ACCOUNTS
 ######################################################################
+
 
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
